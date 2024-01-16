@@ -21,13 +21,13 @@ public class Cliente {
 
     }
     public void  iniciarCliente() throws IOException {
-        in=new DataInputStream(socket.getInputStream());
+
         out = new DataOutputStream(socket.getOutputStream());
-        for (int i = 0 ; i < 3 ; i++){
-            out.writeUTF("Saludo "+ (i+1));
-        }
-        out.writeUTF("fin");
+        out.writeUTF("¿Cómo te llamas?");
+
+        in=new DataInputStream(socket.getInputStream());
         System.out.println(in.readUTF());
+
         socket.close();
     }
 }
