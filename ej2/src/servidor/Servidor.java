@@ -35,7 +35,8 @@ public class Servidor {
             while ((caracter = bufferedReader.read()) != -1) {
                 char letra = (char) caracter;
                 pregunta.append(letra);
-                if(String.valueOf(letra).equalsIgnoreCase("?")){
+                System.out.println(letra);
+                if(String.valueOf(letra).equalsIgnoreCase("?") || caracter == -1){
                     break;
                 }
             }
