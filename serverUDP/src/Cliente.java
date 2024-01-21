@@ -31,9 +31,9 @@ public class Cliente {
 
         //recibir info
         System.out.println("Esperando respuesta del server");
+        buffer = new byte[25];
         DatagramPacket peticion = new DatagramPacket(buffer, buffer.length);
         //cambiar tamaño de buffer
-        buffer = peticion.getData().length;
         socketUdp.receive(peticion);
         mensaje = new String(peticion.getData(),0, peticion.getLength(), StandardCharsets.UTF_8);
         System.out.println(mensaje);

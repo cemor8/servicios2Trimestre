@@ -41,13 +41,15 @@ public class Servidor {
             }
             out = new DataOutputStream(socket.getOutputStream());
             System.out.println(pregunta);
-            if(String.valueOf(pregunta).equalsIgnoreCase("¿Cómo te llamas?”")){
+
+            if(String.valueOf(pregunta).equalsIgnoreCase("¿Cómo te llamas?")){
                 out.writeUTF("Me llamo Ejercicio 2");
             }else if(String.valueOf(pregunta).equalsIgnoreCase("¿Cuántas líneas de código tienes?")){
                 out.writeUTF("Tengo 55 líneas de código");
             }else {
                 out.writeUTF("No he entendido la pregunta");
             }
+            pregunta = new StringBuilder();
             socket.close();
         }
     }

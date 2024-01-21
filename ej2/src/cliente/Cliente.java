@@ -23,7 +23,8 @@ public class Cliente {
     public void  iniciarCliente() throws IOException {
 
         out = new DataOutputStream(socket.getOutputStream());
-        out.writeUTF("¿Cómo te llamas?");
+        String pregunta = "¿Cómo te llamas?";
+        out.write(pregunta.getBytes());
 
         in=new DataInputStream(socket.getInputStream());
         System.out.println(in.readUTF());
