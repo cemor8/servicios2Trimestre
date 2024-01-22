@@ -19,7 +19,7 @@ public class Cliente extends Thread{
         this.posicion = posicion;
         this.cantidadClientes = cantidadClientes;
         direccionServer = InetAddress.getByName("localhost");
-        int puertoLocal = puertoEnviar + posicion; // Puerto en el que este cliente escuchará
+        int puertoLocal = puertoEnviar + posicion;
         socketUdp = new DatagramSocket(puertoLocal);
 
     }
@@ -33,7 +33,7 @@ public class Cliente extends Thread{
     }
     public void iniciarCliente() throws IOException {
         int siguientePosicion = (posicion % cantidadClientes) + 1;
-        int puertoDestino = puertoEnviar + siguientePosicion; // Puerto al que este cliente enviará el token
+        int puertoDestino = puertoEnviar + siguientePosicion;
 
         if (posicion == 1) {
             // Cliente 1: Envía el token al inicio
@@ -48,17 +48,16 @@ public class Cliente extends Thread{
         System.out.println("Cliente " + posicion + ": esperando respuesta");
         DatagramPacket peticion = new DatagramPacket(buffer, buffer.length);
         socketUdp.receive(peticion);
-        System.out.println("Cliente " + posicion + ": recibe token");
-        String mensaje = new String(peticion.getData(), 0, peticion.getLength()).trim();
 
+        String mensaje = new String(peticion.getData(), 0, peticion.getLength()).trim();
+        System.out.println("Cliente " + posicion + ": recibe "+mensaje);
         if (posicion != 1 || !mensaje.equalsIgnoreCase("token")) {
+
             // Cliente reenvía el token al siguiente cliente en el anillo
+
             System.out.println("Cliente: " + posicion + ": reenvía token");
             peticion.setPort(puertoDestino);
             socketUdp.send(peticion);
-        } else {
-            // El Cliente 1 recibe el token de vuelta y termina el ciclo
-            System.out.println("Cliente 1 ha recibido el token de vuelta. Terminando el ciclo.");
         }
         socketUdp.close();
     }
