@@ -17,7 +17,10 @@ public class Servidor {
         serverSocket = new ServerSocket(puerto);
         socket = new Socket();
     }
-
+    /**
+     * Método que inicia el servidor, espera un cliente y accepta su peticion
+     * luego lee el mensaje enviado desde el cliente.
+     * */
     public void iniciar() throws IOException {
         while (funcionando) {
 

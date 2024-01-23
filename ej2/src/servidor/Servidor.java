@@ -17,7 +17,11 @@ public class Servidor {
         serverSocket = new ServerSocket(puerto);
         socket = new Socket();
     }
-
+    /**
+     * Método que se encarga de crear el servidor, escuchara peticiones de preguntas,
+     * las lee carcter a caracter hasta encontrar el caracter ?, cuando acabe, comprueba
+     * la pregunta y la responde si sabe la respuesta
+     * */
     public void iniciar() throws IOException {
         while (funcionando) {
 
@@ -36,7 +40,7 @@ public class Servidor {
                 char letra = (char) caracter;
                 pregunta.append(letra);
                 System.out.println(letra);
-                if(String.valueOf(letra).equalsIgnoreCase("?") || caracter == -1){
+                if(String.valueOf(letra).equalsIgnoreCase("?")){
                     break;
                 }
             }
@@ -46,7 +50,7 @@ public class Servidor {
             if(String.valueOf(pregunta).equalsIgnoreCase("¿Cómo te llamas?")){
                 out.writeUTF("Me llamo Ejercicio 2");
             }else if(String.valueOf(pregunta).equalsIgnoreCase("¿Cuántas líneas de código tienes?")){
-                out.writeUTF("Tengo 55 líneas de código");
+                out.writeUTF("Tengo 61 líneas de código");
             }else {
                 out.writeUTF("No he entendido la pregunta");
             }

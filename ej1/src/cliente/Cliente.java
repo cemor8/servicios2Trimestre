@@ -18,6 +18,10 @@ public class Cliente {
         socket = new Socket(host,puerto);
 
     }
+    /**
+     * Método que se encarga de iniciar el cliente, lee un archivo y manda su
+     * contenido al servidor.
+     * */
     public void  iniciarCliente() throws IOException {
         try {
             FileInputStream fileInputStream = new FileInputStream(ubicacionArchivo);

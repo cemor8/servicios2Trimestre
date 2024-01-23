@@ -7,10 +7,11 @@ public class MainCliente {
         Integer opcion = 0;
         ArrayList<Cliente> clientes = new ArrayList<>();
         while (opcion == 0){
+            System.out.println("Introduce un numero de host entre 2 y 10");
             Scanner scanner = new Scanner(System.in);
             try {
                 opcion = scanner.nextInt();
-                if(opcion <=0 ||opcion > 10){
+                if(opcion <=1 ||opcion > 10){
                     opcion = 0;
                     continue;
                 }

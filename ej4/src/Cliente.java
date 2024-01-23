@@ -31,12 +31,18 @@ public class Cliente extends Thread{
             throw new RuntimeException(e);
         }
     }
+    /**
+     * Método que se encarga de iniciar un cliente, busca el puerto de destino comprobando
+     * la posicion actual del cliente en el anillo, si este es el primero se encarga de enviar el token y luego
+     * esperar a que se lo reenvien, en cambio si este no es el primero, se encarga de esperar su turno y luego reenviar
+     * el token al siguiente cliente, una vez el token llegue al primero, se interrumpe la secuencia
+     * */
     public void iniciarCliente() throws IOException {
         int siguientePosicion = (posicion % cantidadClientes) + 1;
         int puertoDestino = puertoEnviar + siguientePosicion;
 
         if (posicion == 1) {
-            // Cliente 1: Envía el token al inicio
+
             System.out.println("Cliente " + posicion + ": envía token");
             String mensaje = "token";
             buffer = mensaje.getBytes();
@@ -44,7 +50,7 @@ public class Cliente extends Thread{
             socketUdp.send(pregunta);
         }
 
-        // Todos los clientes: Esperan recibir el token
+
         System.out.println("Cliente " + posicion + ": esperando respuesta");
         DatagramPacket peticion = new DatagramPacket(buffer, buffer.length);
         socketUdp.receive(peticion);
@@ -53,7 +59,7 @@ public class Cliente extends Thread{
         System.out.println("Cliente " + posicion + ": recibe "+mensaje);
         if (posicion != 1 || !mensaje.equalsIgnoreCase("token")) {
 
-            // Cliente reenvía el token al siguiente cliente en el anillo
+
 
             System.out.println("Cliente: " + posicion + ": reenvía token");
             peticion.setPort(puertoDestino);

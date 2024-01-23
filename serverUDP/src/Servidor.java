@@ -20,6 +20,10 @@ public class Servidor {
         socketUDP = new DatagramSocket(puerto);
         paquete = new DatagramPacket(buffer, buffer.length);
     }
+    /**
+     * Método que inicia el servidor, espera un cliente y recibe su paquete,
+     * lo muestra y devuelve "recibido", para luego finalizar su ejecucion
+     * */
     public void iniciar() throws IOException {
         while (bandera){
             //recibimos el paquete
@@ -28,7 +32,7 @@ public class Servidor {
             System.out.println("paquete de cliente recibido");
             String mensaje = new String(paquete.getData(),0, paquete.getLength(), StandardCharsets.UTF_8);
             System.out.println(mensaje);
-            //obtenemos puesrot de cluebte
+            //puerto de cliente
             int puertoCliente = paquete.getPort();
             // direccion cliente
             InetAddress direccion = paquete.getAddress();
@@ -39,9 +43,6 @@ public class Servidor {
             String mensaje2 = "recibido";
             buffer = mensaje2.getBytes();
             DatagramPacket respuesta = new DatagramPacket(buffer, buffer.length,direccion,puertoCliente);
-            //decodificar respuesta
-            String mostrar = new String(respuesta.getData(),0, respuesta.getLength(),StandardCharsets.UTF_8);
-            System.out.println(mostrar);
             socketUDP.send(respuesta);
             bandera=false;
 

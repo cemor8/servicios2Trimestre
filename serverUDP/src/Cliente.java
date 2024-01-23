@@ -22,6 +22,10 @@ public class Cliente {
        socketUdp = new DatagramSocket();
 
     }
+    /**
+     * Método que inicia el cliente, envia el mensaje "token" al servidor y espera una respuesta,
+     * luego de recibirla, termina su ejecucion
+     * */
     public void  iniciarCliente() throws IOException {
         // mandar paquete a server
         String mensaje = "token";

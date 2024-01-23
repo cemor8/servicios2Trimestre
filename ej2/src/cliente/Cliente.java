@@ -20,11 +20,16 @@ public class Cliente {
         socket = new Socket(host,puerto);
 
     }
+    /**
+     * Método que hace una pregunta al servidor y espera una respuesta a esta
+     * */
     public void  iniciarCliente() throws IOException {
 
         out = new DataOutputStream(socket.getOutputStream());
-        String pregunta = "¿Cómo te llamas?";
+        String pregunta = "hola";
         out.write(pregunta.getBytes());
+        out.flush();
+        socket.shutdownOutput();
 
         in=new DataInputStream(socket.getInputStream());
         System.out.println(in.readUTF());
