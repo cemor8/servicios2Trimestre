@@ -1,0 +1,30 @@
+cliente envia info al server
+ 
+hay server
+
+hilo pendiende si llega info
+
+
+Clase Servidor - servidor envia el mensaje a todos los clientes menos al que lo ha enviado
+Cliente Thread - pendiente si recibe mensaje cliente
+Controller del CLiente - mandar mensajes, quien tiene acceos a la vista - actualiza la vista
+
+asignar nombre a cliente
+
+identificamos los clientes a los que tenemos que mandar el mensaje a traves del puerto que accedemos a el desde el datagrama
+
+lista de clientes, recorrer sus puertos y enviar mensaje a todos menos al que el puerto sea el mismo al que envio el mensaje
+
+controller Cliente cada vista, crear varios
+
+servidor ver lista de clientes y enviar mensaje
+
+1 vista y 1 controller
+
+text area donde se pone el texto
+
+textfield y boton
+
+cliente thread es tambien un pseudo server
+
+se abre el chat, abro controller, inicio vista, avisar a server que estoy aqui, antes de enviar el primer mensaje, obtener info de cliente nada mas abrirse app
