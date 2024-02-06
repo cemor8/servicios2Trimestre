@@ -11,6 +11,6 @@
       <MFXScrollPane layoutX="188.0" layoutY="45.0" prefHeight="524.0" prefWidth="565.0" styleClass="scroll" />
       <MFXCheckbox layoutX="67.0" layoutY="207.0" styleClass="opcion" text="Enviados" />
       <MFXCheckbox layoutX="66.0" layoutY="155.0" selected="true" styleClass="opcion" text="Recibidos" />
-      <MFXButton layoutX="390.0" layoutY="617.0" prefHeight="51.0" prefWidth="164.0" styleClass="btn" text="Enviar Mensaje" />
+      <MFXButton layoutX="390.0" layoutY="617.0" onMouseClicked="#enviar" prefHeight="51.0" prefWidth="164.0" styleClass="btn" text="Enviar Correo" />
    </children>
 </AnchorPane>
