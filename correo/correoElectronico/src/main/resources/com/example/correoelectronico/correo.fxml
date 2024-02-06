@@ -13,7 +13,7 @@
       <MFXTextField layoutX="134.0" layoutY="436.0" prefHeight="200.0" prefWidth="606.0" />
       <Label layoutX="134.0" layoutY="85.0" prefHeight="49.0" prefWidth="195.0" styleClass="opcion" text="Destinatario" />
       <Label layoutX="134.0" layoutY="227.0" prefHeight="49.0" prefWidth="195.0" styleClass="opcion" text="Asunto" />
-      <MFXButton layoutX="381.0" layoutY="679.0" prefHeight="59.0" prefWidth="236.0" text="Enviar" />
+      <MFXButton layoutX="381.0" layoutY="679.0" onMouseClicked="#enviar" prefHeight="59.0" prefWidth="236.0" styleClass="btn" text="Enviar" />
       <Label layoutX="134.0" layoutY="371.0" prefHeight="49.0" prefWidth="195.0" styleClass="opcion" text="Contenido" />
    </children>
 </AnchorPane>
