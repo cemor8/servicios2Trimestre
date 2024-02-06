@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="principal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="483.0" stylesheets="@../../../styles/estilos_login.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chat.ControllerLogin">
+   <children>
+      <AnchorPane layoutX="50.0" layoutY="42.0" prefHeight="561.0" prefWidth="383.0" styleClass="anchor-redondeado">
+         <children>
+            <MFXTextField id="correo" fx:id="introducirNombre" floatingText="Nombre" layoutX="113.0" layoutY="232.0" prefHeight="49.0" prefWidth="157.0" promptText="Escribe aqui" styleClass="textField" />
+            <MFXButton id="btnContinuar" fx:id="btnContnuar" layoutX="113.0" layoutY="365.0" onAction="#enviarCredenciales" prefHeight="49.0" prefWidth="157.0" styleClass="btn" text="Continuar" />
+            <Label id="mostrarInicioSesion" layoutX="102.0" layoutY="49.0" prefHeight="69.0" prefWidth="201.0" text="Iniciar Sesion" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
