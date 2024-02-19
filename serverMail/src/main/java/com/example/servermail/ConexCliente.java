@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class ClientHandler extends Thread {
+public class ConexCliente extends Thread {
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
     private ArrayList<Correo> correos; // Asegúrate de pasar esta lista al constructor si es necesario
     private HashMap<String, Socket> direcciones;
 
-    public ClientHandler(Socket socket, ArrayList<Correo> correos, HashMap<String, Socket> direcciones) {
+    public ConexCliente(Socket socket, ArrayList<Correo> correos, HashMap<String, Socket> direcciones) {
         this.socket = socket;
         this.correos = correos;
         this.direcciones = direcciones;

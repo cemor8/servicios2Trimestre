@@ -1,14 +1,23 @@
 package com.example.servermail;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import org.w3c.dom.events.Event;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -24,6 +33,7 @@ public class ControllerCliente {
     private int puerto = 5000;
     @FXML
     private MFXScrollPane contenido;
+    ControllerCrearCorreo controllerCrearCorreo;
 
     @FXML
     private MFXCheckbox enviados;
@@ -80,6 +90,7 @@ public class ControllerCliente {
         this.enviados.setSelected(true);
         this.recibidos.setSelected(false);
         this.vBox = new VBox();
+        this.vBox.setFillWidth(true);
         this.contenido.setContent(this.vBox);
         if(this.correosEnviados.isEmpty()){
             System.out.println("fuera");
@@ -89,9 +100,23 @@ public class ControllerCliente {
 
         for(Correo correo : this.correosEnviados){
             HBox hBox = new HBox();
-            Label remitente = new Label("Yo: ");
+            hBox.getStyleClass().add("correo");
+            Label remitente = new Label("Yo");
             Label texto = new Label(correo.getMensaje());
-            hBox.getChildren().addAll(remitente,texto);
+            MFXButton btn = new MFXButton();
+            btn.setId(String.valueOf(this.correosEnviados.indexOf(correo)));
+            btn.getStyleClass().add("btnVer");
+            btn.setOnMouseClicked(this::verEnviado);
+
+            remitente.getStyleClass().add("remitente");
+            texto.getStyleClass().add("texto");
+            HBox.setMargin(btn,new Insets(10,0,0,80));
+            btn.setText("Ver");
+            btn.setMinWidth(50);
+            HBox.setMargin(remitente,new Insets(10,0,0,10));
+            HBox.setMargin(texto,new Insets(10,0,0,20));
+
+            hBox.getChildren().addAll(remitente,texto,btn);
             this.vBox.getChildren().add(hBox);
 
         }
@@ -100,6 +125,7 @@ public class ControllerCliente {
         this.recibidos.setSelected(true);
         this.enviados.setSelected(false);
         this.vBox = new VBox();
+        this.vBox.setFillWidth(true);
         this.contenido.setContent(this.vBox);
         if(this.correosRecibidos.isEmpty()){
             System.out.println("fuera");
@@ -107,28 +133,96 @@ public class ControllerCliente {
         }
         for(Correo correo : this.correosRecibidos){
             HBox hBox = new HBox();
+            hBox.getStyleClass().add("correo");
+            hBox.setPrefWidth(Double.MAX_VALUE);
             Label remitente = new Label(correo.getRemitente());
             Label texto = new Label(correo.getMensaje());
-            hBox.getChildren().addAll(remitente,texto);
+            MFXButton btn = new MFXButton();
+            btn.setId(String.valueOf(this.correosRecibidos.indexOf(correo)));
+            btn.getStyleClass().add("btnVer");
+            remitente.getStyleClass().add("remitente");
+            texto.getStyleClass().add("texto");
+            btn.setOnMouseClicked(this::verRecibido);
+            HBox.setMargin(btn,new Insets(0,0,0,10));
+            HBox.setMargin(remitente,new Insets(0,0,0,5));
+            HBox.setMargin(texto,new Insets(0,0,0,10));
+            hBox.getChildren().addAll(remitente,texto,btn);
             this.vBox.getChildren().add(hBox);
         }
+    }
+
+    public void verEnviado(javafx.scene.input.MouseEvent event)  {
+
+        MFXButton button = (MFXButton) event.getSource();
+        int id = 0;
+        try {
+            id = Integer.parseInt(button.getId());
+        }catch (Exception err){
+            System.out.println(err.getMessage());
+        }
+        Correo correo = this.correosEnviados.get(id);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("vistaCorreo.fxml"));
+        Parent root = null;
+        try {
+            root = fxmlLoader.load();
+        }catch (IOException err){
+            System.out.println(err.getMessage());
+        }
+
+        ControllerVistaCorreo controllerVistaCorreo = fxmlLoader.getController();
+        controllerVistaCorreo.recibirData(correo);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+
+    }
+    public void verRecibido(javafx.scene.input.MouseEvent event)  {
+        MFXButton button = (MFXButton) event.getSource();
+        System.out.println(button.getId());
+        int id = 0;
+        try {
+            id = Integer.parseInt(button.getId());
+        }catch (Exception err){
+            System.out.println(err.getMessage());
+        }
+        System.out.println(id);
+        Correo correo = this.correosRecibidos.get(id);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("vistaCorreo.fxml"));
+        Parent root = null;
+        try {
+            root = fxmlLoader.load();
+        }catch (IOException err){
+            System.out.println(err.getMessage());
+        }
+        ControllerVistaCorreo controllerVistaCorreo = fxmlLoader.getController();
+        controllerVistaCorreo.recibirData(correo);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
     @FXML
     public void enviar() throws IOException {
         /*
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("correo.fxml"));
-        Parent nodo = fxmlLoader.load();
-        ControllerCrearCorreo controllerCrearCorreo = fxmlLoader.getController();
-        controllerCrearCorreo.recibirData(this.correo);
-        stage.setScene(new Scene(nodo));
-        stage.show();
-
-         */
         System.out.println("Enviando mensajes");
         out = new DataOutputStream(socket.getOutputStream());
         out.writeUTF("ENVIAR:"+this.correo+":"+this.correoText.getText()+":"+this.mensaje.getText());
 
+         */
+
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("correo.fxml"));
+        Parent nodo = fxmlLoader.load();
+        ControllerCrearCorreo controllerCrearCorreo = fxmlLoader.getController();
+        controllerCrearCorreo.recibirData(this.correo,this,this.socket);
+        this.controllerCrearCorreo = controllerCrearCorreo;
+        stage.setScene(new Scene(nodo));
+        stage.show();
+
+    }
+    public void modificar(){
+        this.controllerCrearCorreo.correoErroneo();
     }
     public void recibirMensaje(Correo correo, String protocolo){
         Platform.runLater(() -> {
@@ -139,6 +233,7 @@ public class ControllerCliente {
                 }
             } else {
                 this.correosRecibidos.add(correo);
+                System.out.println("recibido");
                 if (this.recibidos.isSelected()) {
                     this.cargarRecibidos();
                 }

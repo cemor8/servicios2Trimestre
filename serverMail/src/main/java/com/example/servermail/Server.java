@@ -35,8 +35,8 @@ public class Server {
             System.out.println("Cliente conectado");
 
             // Crea un nuevo hilo para manejar al cliente
-            ClientHandler clientHandler = new ClientHandler(clientSocket, correos, direcciones);
-            clientHandler.start();
+            ConexCliente conexCliente = new ConexCliente(clientSocket, correos, direcciones);
+            conexCliente.start();
         }
     }
 }

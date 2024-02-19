@@ -37,7 +37,8 @@ public class ClienteThread extends Thread{
                 continue;
             }
             if(receivedMessage.equalsIgnoreCase("nulo")){
-                System.out.println("Nulo");
+                System.out.println("Correo inválido");
+                this.cliente.modificar();
                 continue;
             }
             String[] partes = receivedMessage.split(":");
