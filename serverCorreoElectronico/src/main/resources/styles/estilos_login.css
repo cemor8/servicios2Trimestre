@@ -1,0 +1,33 @@
+
+#mostrarIniciarSesion{
+    -fx-text-alignment: right;
+}
+#mostrarInicioSesion{
+    -fx-font-size: 30;
+    -fx-font-family: "Roboto";
+    -fx-text-fill: "black";
+    -fx-font-weight:bold;
+}
+.anchor-redondeado {
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-background-color: white;
+
+}
+#principal{
+    -fx-background-color: #445152;
+ }
+ #secundario{
+    -fx-background-color: "white";
+  }
+ .btn{
+    -fx-background-color:#23BDC3;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+    -fx-text-fill: "white";
+    -fx-background-radius: 5px;
+ }
+ .error{
+    -fx-text-fill : "red";
+ }

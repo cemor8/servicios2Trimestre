@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="474.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.servercorreoelectronico.ControllerVistaCorreo">
+   <children>
+      <Label fx:id="labelRemitente" layoutX="31.0" layoutY="46.0" prefHeight="32.0" prefWidth="236.0" text="Label" />
+      <Label fx:id="labelDestinatario" layoutX="31.0" layoutY="107.0" prefHeight="32.0" prefWidth="236.0" text="Label" />
+      <Label fx:id="labelDescripcion" alignment="TOP_LEFT" layoutX="31.0" layoutY="202.0" prefHeight="250.0" prefWidth="592.0" text="Label" />
+   </children>
+</AnchorPane>

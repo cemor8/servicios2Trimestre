@@ -1,0 +1,87 @@
+.propio{
+-fx-alignment: top-right;
+    -fx-background-color: #DCF8C6;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px;
+    -fx-label-padding: 5px;
+    -fx-max-width: 300px;
+    -fx-wrap-text: true;
+}
+.otro{
+-fx-alignment: top-left;
+    -fx-background-color: #EAEAEA;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px;
+    -fx-label-padding: 5px;
+    -fx-max-width: 300px;
+    -fx-wrap-text: true;
+}
+
+
+.nombre{
+    -fx-font-size: 15;
+    -fx-font-family: "Roboto";
+    -fx-text-fill: "white";
+    -fx-font-weight:bold;
+}
+
+.scroll{
+    -fx-background-color:#748283;
+}
+.btn{
+    -fx-background-color:#23BDC3;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+    -fx-text-fill: "white";
+    -fx-background-radius: 5px;
+}
+.enviar{
+        -fx-min-height: 30px;
+            -fx-max-height: 40px;
+            -fx-pref-height: 40px;
+            -fx-font-size: 15px;
+}
+.fondo{
+    -fx-background-color:#445152;
+}
+
+.opcion{
+    -fx-text-fill : "white"
+}
+
+.texto{
+    -fx-text-fill : "white";
+        -fx-font-size : 16px;
+        -fx-max-width: 100px;
+        -fx-pref-width: 100px;
+        -fx-border-color: black; /* Define el color del borde */
+            -fx-border-width: 1px;
+}
+.remitente{
+    -fx-text-fill : "white";
+    -fx-font-size : 16px;
+    -fx-max-width: 100px;
+    -fx-pref-width: 100px;
+    -fx-border-color: black; /* Define el color del borde */
+        -fx-border-width: 1px;
+}
+.btnVer{
+
+}
+.error{
+    -fx-text-fill : "red";
+    -fx-font-size : 12px;
+
+}
+.correo {
+    -fx-min-width: 200px; /* Ancho mínimo del HBox */
+    -fx-pref-width: 395px; /* Ancho mínimo del HBox */
+    -fx-min-height: 50px; /* Alto mínimo del HBox */
+    -fx-pref-height: 50px; /* Alto preferido del HBox */
+    -fx-max-width: 395px; /* Ancho máximo del HBox */
+    -fx-max-height: 50px; /* Alto máximo del HBox */
+    -fx-border-color: black; /* Define el color del borde */
+    -fx-border-width: 1px;
+    /* Agrega más estilos como fondo, bordes, etc., según necesites */
+}

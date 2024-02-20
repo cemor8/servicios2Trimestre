@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="724.0" prefWidth="943.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.servercorreoelectronico.ControllerCliente">
+   <children>
+      <MFXScrollPane fx:id="contenido" layoutX="263.0" layoutY="88.0" prefHeight="367.0" prefWidth="400.0" styleClass="scroll" />
+      <MFXCheckbox fx:id="enviados" layoutX="67.0" layoutY="207.0" onMouseClicked="#cargarEnviados" styleClass="opcion" text="Enviados" />
+      <MFXCheckbox fx:id="recibidos" layoutX="66.0" layoutY="155.0" onMouseClicked="#cargarRecibidos" selected="true" styleClass="opcion" text="Recibidos" />
+      <MFXButton layoutX="381.0" layoutY="533.0" onMouseClicked="#enviar" prefHeight="51.0" prefWidth="164.0" styleClass="btn" text="Enviar Correo" />
+   </children>
+</AnchorPane>
