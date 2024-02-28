@@ -31,7 +31,7 @@ public class ControllerCrearCorreo {
             return;
         }
         out = new ObjectOutputStream(socket.getOutputStream());
-        out.writeObject(new Correo(this.destinatario.getText(),this.direccion,this.contenido.getText()));
+        out.writeObject(new Correo(this.direccion,this.destinatario.getText(),this.contenido.getText()));
     }
     public void recibirData(String mensaje, ControllerCliente cliente, Socket socket){
         this.direccion = mensaje;

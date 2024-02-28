@@ -43,7 +43,7 @@ public class ClienteThread extends Thread{
                 this.cliente.modificar();
                 continue;
             }
-
+            System.out.println("recibiendo");
             this.cliente.recibirMensaje(correoRecibido);
 
         }

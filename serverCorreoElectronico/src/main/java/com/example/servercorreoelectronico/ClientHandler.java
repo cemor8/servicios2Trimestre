@@ -48,7 +48,8 @@ public class ClientHandler extends Thread {
                     System.out.println("el correo existe");
                     this.correos.add(correo);
                     out.writeObject(correo);
-                    new ObjectOutputStream(this.direcciones.get(correo.getRemitente()).getOutputStream()).writeObject(correo);
+                    System.out.println(correo.getDestinatario() + "destinatario");
+                    new ObjectOutputStream(this.direcciones.get(correo.getDestinatario()).getOutputStream()).writeObject(correo);
 
                 }
 

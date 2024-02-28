@@ -28,6 +28,9 @@ public class ControllerCliente {
     @FXML
     private MFXScrollPane contenido;
     ControllerCrearCorreo controllerCrearCorreo;
+    @FXML
+    private Label labelNombre;
+
 
     @FXML
     private MFXCheckbox enviados;
@@ -47,7 +50,7 @@ public class ControllerCliente {
 
     public void recibirCorreo(String mensaje) throws IOException, ClassNotFoundException {
         this.correo = mensaje;
-
+        this.labelNombre.setText(this.correo);
         socket = new Socket(host, puerto);
 
         out = new ObjectOutputStream(socket.getOutputStream());
