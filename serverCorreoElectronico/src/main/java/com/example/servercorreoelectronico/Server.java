@@ -31,7 +31,6 @@ public class Server {
             Socket clientSocket = serverSocket.accept();
             System.out.println("Cliente conectado");
 
-            // Crea un nuevo hilo para manejar al cliente
             ClientHandler clientHandler = new ClientHandler(clientSocket, correos, direcciones);
             clientHandler.start();
         }

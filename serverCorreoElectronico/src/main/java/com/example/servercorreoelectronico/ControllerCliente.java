@@ -69,8 +69,6 @@ public class ControllerCliente {
 
         Correo correoRecibido = (Correo) in.readObject();
 
-        System.out.println("recuperando mensajes");
-        System.out.println(correoRecibido);
 
         while (correoRecibido != null) {
             if (correoRecibido.getDestinatario().equalsIgnoreCase(correoRecibido.getRemitente())&& correoRecibido.getDestinatario().equalsIgnoreCase(this.correo)){
@@ -84,11 +82,9 @@ public class ControllerCliente {
 
             correoRecibido = (Correo) in.readObject();
         }
-        System.out.println("acabado de recuperar");
+
         this.hilo = new ClienteThread(socket, this);
         this.hilo.start();
-        System.out.println(correosEnviados.size());
-        System.out.println(correosRecibidos.size());
         this.cargarEnviados();
 
     }
@@ -124,7 +120,7 @@ public class ControllerCliente {
             btn.setText("Ver");
             btn.setMinWidth(50);
             HBox.setMargin(remitente, new Insets(15, 0, 0, 10));
-            HBox.setMargin(texto, new Insets(15, 0, 0, 70));
+            HBox.setMargin(texto, new Insets(15, 0, 0, 40));
 
             hBox.getChildren().addAll(remitente, texto, btn);
             this.vBox.getChildren().add(hBox);
@@ -162,7 +158,7 @@ public class ControllerCliente {
             btn.setOnMouseClicked(this::verRecibido);
             HBox.setMargin(btn, new Insets(10, 20, 0, 70));
             HBox.setMargin(remitente, new Insets(15, 0, 0, 5));
-            HBox.setMargin(texto, new Insets(15, 0, 0, 70));
+            HBox.setMargin(texto, new Insets(15, 0, 0, 40));
 
             hBox.getChildren().addAll(remitente, texto, btn);
             this.vBox.getChildren().add(hBox);
@@ -206,14 +202,14 @@ public class ControllerCliente {
      */
     public void verRecibido(javafx.scene.input.MouseEvent event) {
         MFXButton button = (MFXButton) event.getSource();
-        System.out.println(button.getId());
+
         int id = 0;
         try {
             id = Integer.parseInt(button.getId());
         } catch (Exception err) {
             System.out.println(err.getMessage());
         }
-        System.out.println(id);
+
         Correo correo = this.correosRecibidos.get(id);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("vistaCorreo.fxml"));
@@ -262,7 +258,7 @@ public class ControllerCliente {
         Platform.runLater(() -> {
 
             if (correo.getRemitente().equalsIgnoreCase(correo.getDestinatario())){
-                System.out.println("iguales");
+
                 this.correosEnviados.add(correo);
                 this.correosRecibidos.add(correo);
                 if (this.enviados.isSelected()) {
@@ -271,8 +267,7 @@ public class ControllerCliente {
                     this.cargarRecibidos();
                 }
             }else if (correo.getRemitente().equalsIgnoreCase(this.correo)) {
-                System.out.println("entre");
-                System.out.println(correo);
+
                 this.correosEnviados.add(correo);
                 if (this.enviados.isSelected()) {
                     this.cargarEnviados();
