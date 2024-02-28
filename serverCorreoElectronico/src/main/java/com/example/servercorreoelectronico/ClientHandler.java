@@ -19,6 +19,9 @@ public class ClientHandler extends Thread {
         this.direcciones = direcciones;
     }
 
+    /**
+     * Método que se encarga de gestionar las conexiones con cada cliente del servidor de correo
+     */
     @Override
     public void run() {
         while (true) {

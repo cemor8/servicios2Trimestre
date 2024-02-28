@@ -49,6 +49,13 @@ public class ControllerCliente {
     @FXML
     private MFXTextField correoText;
 
+    /**
+     * Método que se encarga de inicializar el cliente, envia un mensaje al servidor especifico para el login y recibe y carga correos
+     * @param mensaje
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+
     public void recibirCorreo(String mensaje) throws IOException, ClassNotFoundException {
         this.correo = mensaje;
         this.labelNombre.setText("Hola, " + this.correo);
@@ -86,6 +93,9 @@ public class ControllerCliente {
 
     }
 
+    /**
+     * Método que se encarga de cargar los correos enviados en la vista
+     */
     public void cargarEnviados() {
         this.enviados.setSelected(true);
         this.recibidos.setSelected(false);
@@ -123,6 +133,9 @@ public class ControllerCliente {
         }
     }
 
+    /**
+     * Método que se encarga de cargar los correos recibidos en la vista
+     */
     public void cargarRecibidos() {
         this.recibidos.setSelected(true);
         this.enviados.setSelected(false);
@@ -157,6 +170,10 @@ public class ControllerCliente {
         }
     }
 
+    /**
+     * Método que carga la vista detallada de un correo enviado
+     * @param event
+     */
     public void verEnviado(javafx.scene.input.MouseEvent event) {
 
         MFXButton button = (MFXButton) event.getSource();
@@ -183,7 +200,10 @@ public class ControllerCliente {
         stage.show();
 
     }
-
+    /**
+     * Método que carga la vista detallada de un correo recibido
+     * @param event
+     */
     public void verRecibido(javafx.scene.input.MouseEvent event) {
         MFXButton button = (MFXButton) event.getSource();
         System.out.println(button.getId());
@@ -210,6 +230,10 @@ public class ControllerCliente {
         stage.show();
     }
 
+    /**
+     * Método que carga la nueva vista para enviar un nuevo correo
+     * @throws IOException
+     */
     @FXML
     public void enviar() throws IOException {
 
@@ -230,6 +254,10 @@ public class ControllerCliente {
         this.controllerCrearCorreo.correoErroneo();
     }
 
+    /**
+     * Método que se encarga de recibir los nuevos correos y añadirlos a la lista
+     * @param correo
+     */
     public void recibirMensaje(Correo correo) {
         Platform.runLater(() -> {
 

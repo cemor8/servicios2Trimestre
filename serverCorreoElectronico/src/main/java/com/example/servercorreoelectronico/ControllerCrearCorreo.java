@@ -27,6 +27,11 @@ public class ControllerCrearCorreo {
     @FXML
     private Label correoErroneo;
 
+    /**
+     * Método que se encarga de enviar un nuevo correo
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void enviar(MouseEvent event) throws IOException {
         if(this.contenido.getText().isEmpty() || this.destinatario.getText().isEmpty()){
@@ -35,12 +40,24 @@ public class ControllerCrearCorreo {
         out = new ObjectOutputStream(socket.getOutputStream());
         out.writeObject(new Correo(this.direccion,this.destinatario.getText(),this.contenido.getText(),this.asunto.getText()));
     }
+
+    /**
+     * Método encargado de recibir la informacion
+     * @param mensaje
+     * @param cliente
+     * @param socket
+     */
     public void recibirData(String mensaje, ControllerCliente cliente, Socket socket){
         this.direccion = mensaje;
         this.cliente = cliente;
         this.socket = socket;
 
-    }public void correoErroneo(){
+    }
+
+    /**
+     * Método que indica que un correo no ha sido encontrado en el servidor
+     */
+    public void correoErroneo(){
         Platform.runLater(() -> {
             this.correoErroneo.setText("Correo no encontrado");
         });

@@ -35,8 +35,6 @@ public class ControllerLogin {
             return;
         }
 
-
-
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Parent root = fxmlLoader.load();
         ControllerCliente cliente = fxmlLoader.getController();

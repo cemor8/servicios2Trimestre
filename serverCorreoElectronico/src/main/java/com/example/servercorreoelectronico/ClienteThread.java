@@ -17,6 +17,10 @@ public class ClienteThread extends Thread{
         this.socket = socket;
         this.cliente = cliente;
     }
+
+    /**
+     * Método que se encarga de recibir actualizaciones de correos nuevos para cargarlos en la vista
+     */
     @Override
     public void run(){
         while (activado){
