@@ -45,11 +45,17 @@ public class ClientHandler extends Thread {
                         out.writeObject(null);
                         continue;
                     }
-                    System.out.println("el correo existe");
-                    this.correos.add(correo);
-                    out.writeObject(correo);
-                    System.out.println(correo.getDestinatario() + "destinatario");
-                    new ObjectOutputStream(this.direcciones.get(correo.getDestinatario()).getOutputStream()).writeObject(correo);
+
+                    if (correo.getRemitente().equalsIgnoreCase(correo.getDestinatario())){
+                        System.out.println("iguales");
+                        this.correos.add(correo);
+                        out.writeObject(correo);
+                    }else{
+                        this.correos.add(correo);
+                        out.writeObject(correo);
+                        new ObjectOutputStream(this.direcciones.get(correo.getDestinatario()).getOutputStream()).writeObject(correo);
+                    }
+
 
                 }
 

@@ -23,6 +23,8 @@ public class ControllerCrearCorreo {
     private Socket socket;
     private ControllerCliente cliente;
     @FXML
+    private MFXTextField asunto;
+    @FXML
     private Label correoErroneo;
 
     @FXML
@@ -31,7 +33,7 @@ public class ControllerCrearCorreo {
             return;
         }
         out = new ObjectOutputStream(socket.getOutputStream());
-        out.writeObject(new Correo(this.direccion,this.destinatario.getText(),this.contenido.getText()));
+        out.writeObject(new Correo(this.direccion,this.destinatario.getText(),this.contenido.getText(),this.asunto.getText()));
     }
     public void recibirData(String mensaje, ControllerCliente cliente, Socket socket){
         this.direccion = mensaje;
@@ -40,7 +42,7 @@ public class ControllerCrearCorreo {
 
     }public void correoErroneo(){
         Platform.runLater(() -> {
-            this.correoErroneo.setText("Mal");
+            this.correoErroneo.setText("Correo no encontrado");
         });
     }
 

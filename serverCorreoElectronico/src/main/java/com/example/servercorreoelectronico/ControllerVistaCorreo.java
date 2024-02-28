@@ -13,10 +13,13 @@ public class ControllerVistaCorreo {
 
     @FXML
     private Label labelRemitente;
+    @FXML
+    private Label labelAsunto;
     public void recibirData(Correo correo){
         this.labelDescripcion.setText(correo.getMensaje());
         this.labelDestinatario.setText(correo.getDestinatario());
         this.labelRemitente.setText(correo.getRemitente());
+        this.labelAsunto.setText(correo.getAsunto());
     }
 
 }

@@ -30,6 +30,7 @@ public class ControllerCliente {
     ControllerCrearCorreo controllerCrearCorreo;
     @FXML
     private Label labelNombre;
+    private Stage stage;
 
 
     @FXML
@@ -50,12 +51,12 @@ public class ControllerCliente {
 
     public void recibirCorreo(String mensaje) throws IOException, ClassNotFoundException {
         this.correo = mensaje;
-        this.labelNombre.setText(this.correo);
+        this.labelNombre.setText("Hola, " + this.correo);
         socket = new Socket(host, puerto);
 
         out = new ObjectOutputStream(socket.getOutputStream());
 
-        out.writeObject(new Correo(this.correo, "server", null));
+        out.writeObject(new Correo(this.correo, "server", null, null));
 
         in = new ObjectInputStream(socket.getInputStream());
 
@@ -65,9 +66,12 @@ public class ControllerCliente {
         System.out.println(correoRecibido);
 
         while (correoRecibido != null) {
-            if (correoRecibido.getDestinatario().equalsIgnoreCase(this.correo)) {
+            if (correoRecibido.getDestinatario().equalsIgnoreCase(correoRecibido.getRemitente())&& correoRecibido.getDestinatario().equalsIgnoreCase(this.correo)){
                 this.correosRecibidos.add(correoRecibido);
-            }else if(correoRecibido.getRemitente().equalsIgnoreCase(this.correo)){
+                this.correosEnviados.add(correoRecibido);
+            } else if (correoRecibido.getDestinatario().equalsIgnoreCase(this.correo)) {
+                this.correosRecibidos.add(correoRecibido);
+            } else if (correoRecibido.getRemitente().equalsIgnoreCase(this.correo)) {
                 this.correosEnviados.add(correoRecibido);
             }
 
@@ -97,8 +101,8 @@ public class ControllerCliente {
         for (Correo correo : this.correosEnviados) {
             HBox hBox = new HBox();
             hBox.getStyleClass().add("correo");
-            Label remitente = new Label("Yo");
-            Label texto = new Label(correo.getMensaje());
+            Label remitente = new Label("Para: "+correo.getDestinatario());
+            Label texto = new Label(correo.getAsunto());
             MFXButton btn = new MFXButton();
             btn.setId(String.valueOf(this.correosEnviados.indexOf(correo)));
             btn.getStyleClass().add("btnVer");
@@ -106,14 +110,15 @@ public class ControllerCliente {
 
             remitente.getStyleClass().add("remitente");
             texto.getStyleClass().add("texto");
-            HBox.setMargin(btn, new Insets(10, 0, 0, 80));
-            btn.setText("Ver");
+            HBox.setMargin(btn, new Insets(15, 0, 0, 80));
+            btn.setText("Ver Mensaje");
             btn.setMinWidth(50);
-            HBox.setMargin(remitente, new Insets(10, 0, 0, 10));
-            HBox.setMargin(texto, new Insets(10, 0, 0, 20));
+            HBox.setMargin(remitente, new Insets(15, 0, 0, 10));
+            HBox.setMargin(texto, new Insets(15, 0, 0, 20));
 
             hBox.getChildren().addAll(remitente, texto, btn);
             this.vBox.getChildren().add(hBox);
+            VBox.setMargin(hBox,new Insets(10,5,0,10));
 
         }
     }
@@ -133,18 +138,22 @@ public class ControllerCliente {
             hBox.getStyleClass().add("correo");
             hBox.setPrefWidth(Double.MAX_VALUE);
             Label remitente = new Label(correo.getRemitente());
-            Label texto = new Label(correo.getMensaje());
+            Label texto = new Label(correo.getAsunto());
             MFXButton btn = new MFXButton();
             btn.setId(String.valueOf(this.correosRecibidos.indexOf(correo)));
             btn.getStyleClass().add("btnVer");
+            btn.setText("Ver Mensaje");
+            btn.setMinWidth(50);
             remitente.getStyleClass().add("remitente");
             texto.getStyleClass().add("texto");
             btn.setOnMouseClicked(this::verRecibido);
-            HBox.setMargin(btn, new Insets(0, 0, 0, 10));
-            HBox.setMargin(remitente, new Insets(0, 0, 0, 5));
-            HBox.setMargin(texto, new Insets(0, 0, 0, 10));
+            HBox.setMargin(btn, new Insets(15, 0, 0, 80));
+            HBox.setMargin(remitente, new Insets(15, 10, 0, 5));
+            HBox.setMargin(texto, new Insets(15, 0, 0, 10));
+
             hBox.getChildren().addAll(remitente, texto, btn);
             this.vBox.getChildren().add(hBox);
+            VBox.setMargin(hBox,new Insets(10,5,0,10));
         }
     }
 
@@ -203,12 +212,6 @@ public class ControllerCliente {
 
     @FXML
     public void enviar() throws IOException {
-        /*
-        System.out.println("Enviando mensajes");
-        out = new DataOutputStream(socket.getOutputStream());
-        out.writeUTF("ENVIAR:"+this.correo+":"+this.correoText.getText()+":"+this.mensaje.getText());
-
-         */
 
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("correo.fxml"));
@@ -218,6 +221,8 @@ public class ControllerCliente {
         this.controllerCrearCorreo = controllerCrearCorreo;
         stage.setScene(new Scene(nodo));
         stage.show();
+        this.stage = stage;
+
 
     }
 
@@ -227,7 +232,19 @@ public class ControllerCliente {
 
     public void recibirMensaje(Correo correo) {
         Platform.runLater(() -> {
-            if (correo.getRemitente().equalsIgnoreCase(this.correo)) {
+
+            if (correo.getRemitente().equalsIgnoreCase(correo.getDestinatario())){
+                System.out.println("iguales");
+                this.correosEnviados.add(correo);
+                this.correosRecibidos.add(correo);
+                if (this.enviados.isSelected()) {
+                    this.cargarEnviados();
+                }else {
+                    this.cargarRecibidos();
+                }
+            }else if (correo.getRemitente().equalsIgnoreCase(this.correo)) {
+                System.out.println("entre");
+                System.out.println(correo);
                 this.correosEnviados.add(correo);
                 if (this.enviados.isSelected()) {
                     this.cargarEnviados();
@@ -237,6 +254,9 @@ public class ControllerCliente {
                 if (this.recibidos.isSelected()) {
                     this.cargarRecibidos();
                 }
+            }
+            if (this.stage != null) {
+                stage.close();
             }
         });
 

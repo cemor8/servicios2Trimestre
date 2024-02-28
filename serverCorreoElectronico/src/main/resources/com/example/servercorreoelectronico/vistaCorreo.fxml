@@ -3,11 +3,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="474.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.servercorreoelectronico.ControllerVistaCorreo">
+<AnchorPane prefHeight="474.0" prefWidth="639.0" styleClass="fondo" stylesheets="@../../../styles/estilos.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.servercorreoelectronico.ControllerVistaCorreo">
    <children>
-      <Label fx:id="labelRemitente" layoutX="31.0" layoutY="46.0" prefHeight="32.0" prefWidth="236.0" text="Label" />
-      <Label fx:id="labelDestinatario" layoutX="31.0" layoutY="107.0" prefHeight="32.0" prefWidth="236.0" text="Label" />
-      <Label fx:id="labelDescripcion" alignment="TOP_LEFT" layoutX="31.0" layoutY="202.0" prefHeight="250.0" prefWidth="592.0" text="Label" />
+      <Label fx:id="labelRemitente" layoutX="31.0" layoutY="82.0" prefHeight="32.0" prefWidth="182.0" styleClass="contenido" text="Label" />
+      <Label fx:id="labelDestinatario" layoutX="345.0" layoutY="77.0" prefHeight="43.0" prefWidth="182.0" styleClass="contenido" text="Label" />
+      <Label fx:id="labelDescripcion" alignment="TOP_LEFT" layoutX="31.0" layoutY="321.0" prefHeight="131.0" prefWidth="578.0" styleClass="contenido" text="Label" />
+      <Label layoutX="31.0" layoutY="23.0" prefHeight="32.0" prefWidth="210.0" styleClass="labelCorreo" text="Remitente" />
+      <Label layoutX="345.0" layoutY="23.0" prefHeight="32.0" prefWidth="210.0" styleClass="labelCorreo" text="Destinatario" />
+      <Label layoutX="31.0" layoutY="131.0" prefHeight="32.0" prefWidth="210.0" styleClass="labelCorreo" text="Asunto" />
+      <Label fx:id="labelAsunto" layoutX="31.0" layoutY="186.0" prefHeight="32.0" prefWidth="182.0" styleClass="contenido" text="Label" />
+      <Label layoutX="31.0" layoutY="254.0" prefHeight="32.0" prefWidth="210.0" styleClass="labelCorreo" text="Mensaje" />
    </children>
 </AnchorPane>
