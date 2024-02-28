@@ -61,10 +61,16 @@
     -fx-font-size : 14px;
     -fx-max-width: 130px;
     -fx-pref-width: 130px;
-    -fx-border-color: black; /* Define el color del borde */
-    -fx-border-width: 1px;
+    /*-fx-border-color: black;*/ /* Define el color del borde */
+    /*-fx-border-width: 1px;*/
 }
 .btnVer{
+    -fx-pref-width: 150px;
+    -fx-background-color:#23BDC3;
+        -fx-font-weight: bold;
+        -fx-font-size: 15;
+        -fx-text-fill: "white";
+        -fx-background-radius: 5px;
 
 }
 .error{
@@ -73,14 +79,15 @@
 
 }
 .correo {
-    -fx-min-width: 200px; /* Ancho mínimo del HBox */
-    -fx-pref-width: 380px; /* Ancho mínimo del HBox */
-    -fx-min-height: 50px; /* Alto mínimo del HBox */
-    -fx-pref-height: 50px; /* Alto preferido del HBox */
-    -fx-max-width: 380px; /* Ancho máximo del HBox */
-    -fx-max-height: 50px; /* Alto máximo del HBox */
-    -fx-border-color: black; /* Define el color del borde */
-    -fx-border-width: 1px;
+    -fx-min-width: 200px;
+    -fx-pref-width: 380px;
+    -fx-min-height: 50px;
+    -fx-pref-height: 50px;
+    -fx-max-width: 380px;
+    -fx-max-height: 50px;
+    /*-fx-border-color: black;*/
+
+    /*-fx-border-width: 1px;*/
     -fx-background-color : #445152;
     -fx-background-radius : 10px;
 
@@ -88,7 +95,11 @@
 
 
 .introducir{
-
+    -fx-max-width: 400px;
+    -fx-max-height: 40px;
+    -fx-min-width: 400px;
+    -fx-min-height: 40px;
+    -fx-font-size : 14px
 }
 
  .error{
@@ -103,10 +114,4 @@
  .contenido{
     -fx-text-fill : "white";
         -fx-font-size: 14px;
- }
- .dest{
-
- }
- .rem{
-
  }

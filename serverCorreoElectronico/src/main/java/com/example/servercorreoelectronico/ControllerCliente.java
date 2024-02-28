@@ -110,11 +110,11 @@ public class ControllerCliente {
 
             remitente.getStyleClass().add("remitente");
             texto.getStyleClass().add("texto");
-            HBox.setMargin(btn, new Insets(15, 0, 0, 80));
-            btn.setText("Ver Mensaje");
+            HBox.setMargin(btn, new Insets(10, 20, 0, 70));
+            btn.setText("Ver");
             btn.setMinWidth(50);
             HBox.setMargin(remitente, new Insets(15, 0, 0, 10));
-            HBox.setMargin(texto, new Insets(15, 0, 0, 20));
+            HBox.setMargin(texto, new Insets(15, 0, 0, 70));
 
             hBox.getChildren().addAll(remitente, texto, btn);
             this.vBox.getChildren().add(hBox);
@@ -142,14 +142,14 @@ public class ControllerCliente {
             MFXButton btn = new MFXButton();
             btn.setId(String.valueOf(this.correosRecibidos.indexOf(correo)));
             btn.getStyleClass().add("btnVer");
-            btn.setText("Ver Mensaje");
+            btn.setText("Ver");
             btn.setMinWidth(50);
             remitente.getStyleClass().add("remitente");
             texto.getStyleClass().add("texto");
             btn.setOnMouseClicked(this::verRecibido);
-            HBox.setMargin(btn, new Insets(15, 0, 0, 80));
-            HBox.setMargin(remitente, new Insets(15, 10, 0, 5));
-            HBox.setMargin(texto, new Insets(15, 0, 0, 10));
+            HBox.setMargin(btn, new Insets(10, 20, 0, 70));
+            HBox.setMargin(remitente, new Insets(15, 0, 0, 5));
+            HBox.setMargin(texto, new Insets(15, 0, 0, 70));
 
             hBox.getChildren().addAll(remitente, texto, btn);
             this.vBox.getChildren().add(hBox);
