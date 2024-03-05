@@ -53,16 +53,16 @@
         -fx-font-size : 14px;
         -fx-max-width: 130px;
         -fx-pref-width: 130px;
-        -fx-border-color: black; /* Define el color del borde */
-    -fx-border-width: 1px;
+
+
 }
 .remitente{
     -fx-text-fill : "white";
     -fx-font-size : 14px;
     -fx-max-width: 130px;
     -fx-pref-width: 130px;
-    /*-fx-border-color: black;*/ /* Define el color del borde */
-    /*-fx-border-width: 1px;*/
+    -fx-min-width: 130px;
+
 }
 .btnVer{
     -fx-pref-width: 150px;
@@ -85,9 +85,6 @@
     -fx-pref-height: 50px;
     -fx-max-width: 380px;
     -fx-max-height: 50px;
-    /*-fx-border-color: black;*/
-
-    /*-fx-border-width: 1px;*/
     -fx-background-color : #445152;
     -fx-background-radius : 10px;
 
