@@ -29,9 +29,9 @@ public class ClientHandler extends Thread {
                 in = new ObjectInputStream(socket.getInputStream());
                 out = new ObjectOutputStream(socket.getOutputStream());
                 Correo correo = (Correo) in.readObject();
-                System.out.println(correo.getDestinatario());
+
                 if (correo.getDestinatario().trim().equalsIgnoreCase("server")) {
-                    System.out.println("entrando a logear");
+
                     if (!this.direcciones.containsKey(correo.getRemitente())) {
                         this.direcciones.put(correo.getRemitente(), socket);
                     }
@@ -44,13 +44,13 @@ public class ClientHandler extends Thread {
                     out.writeObject(null);
                 } else {
                     if (!this.direcciones.containsKey(correo.getDestinatario())) {
-                        System.out.println("Correo no existente");
+
                         out.writeObject(null);
                         continue;
                     }
 
                     if (correo.getRemitente().equalsIgnoreCase(correo.getDestinatario())){
-                        System.out.println("iguales");
+
                         this.correos.add(correo);
                         out.writeObject(correo);
                     }else{

@@ -99,7 +99,7 @@ public class ControllerCliente {
         this.vBox.setFillWidth(true);
         this.contenido.setContent(this.vBox);
         if (this.correosEnviados.isEmpty()) {
-            System.out.println("fuera");
+
             return;
         }
 
@@ -139,7 +139,7 @@ public class ControllerCliente {
         this.vBox.setFillWidth(true);
         this.contenido.setContent(this.vBox);
         if (this.correosRecibidos.isEmpty()) {
-            System.out.println("fuera");
+
             return;
         }
         for (Correo correo : this.correosRecibidos) {

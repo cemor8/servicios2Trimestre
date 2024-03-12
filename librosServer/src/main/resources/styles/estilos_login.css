@@ -1,0 +1,35 @@
+.textfieldmeter {
+    -fx-border-color: black;
+    -fx-floating-text-fill: gray;
+}
+#mostrarIniciarSesion{
+    -fx-text-alignment: right;
+}
+#mostrarInicioSesion{
+    -fx-font-size: 30;
+    -fx-font-family: "Roboto Mono";
+    -fx-text-fill: "black";
+    -fx-font-weight: bold;
+}
+.anchor-redondeado {
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-background-color: white;
+
+}
+#principal{
+    -fx-background-color: #333333;
+ }
+ #secundario{
+    -fx-background-color: "white";
+  }
+ .btn{
+    -fx-background-color: #28C3E5;
+    -fx-font-family: "Roboto Mono";
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+    -fx-text-fill: "white";
+ }
+ .error{
+    -fx-text-fill : "red";
+ }

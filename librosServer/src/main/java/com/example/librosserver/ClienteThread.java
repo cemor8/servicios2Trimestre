@@ -1,6 +1,8 @@
-package com.example.servercorreoelectronico;
+package com.example.librosserver;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class ClienteThread extends Thread{
@@ -11,11 +13,13 @@ public class ClienteThread extends Thread{
     private String host = "localhost";
     private String correo;
     private Boolean activado = true;
-    ControllerCliente cliente;
+    ControllerVistaLibro controllerVistaLibro;
+    private Data data;
 
-    public ClienteThread(Socket socket, ControllerCliente cliente) {
+    public ClienteThread(Socket socket, ControllerVistaLibro cliente,Data data) {
         this.socket = socket;
-        this.cliente = cliente;
+        this.controllerVistaLibro = cliente;
+        this.data = data;
     }
 
     /**
@@ -32,23 +36,20 @@ public class ClienteThread extends Thread{
                 System.out.println(e.getMessage());
                 continue;
             }
-            Correo correoRecibido;
+            Libro libro;
 
             try {
-                correoRecibido = (Correo) in.readObject();
+                libro = (Libro) in.readObject();
             } catch (IOException e) {
                 System.out.println(e.getMessage());
                 continue;
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
-            if(correoRecibido == null){
-
-                this.cliente.modificar();
-                continue;
+            if (data.isViendo()){
+                this.controllerVistaLibro.recibirLibro(libro);
             }
 
-            this.cliente.recibirMensaje(correoRecibido);
 
 
         }

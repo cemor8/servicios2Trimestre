@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="menu" fx:id="menuLateral" prefHeight="900.0" prefWidth="292.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librosserver.ControllerMenu">
+   <children>
+      <Label id="mostrarNombre" fx:id="labelMostrarNombre" alignment="CENTER" layoutX="24.0" layoutY="36.0"  prefHeight="80.0" prefWidth="257.0" />
+      <VBox layoutX="-3.0" layoutY="298.0" prefHeight="390.0" prefWidth="307.0">
+         <children>
+            <HBox fx:id="hboxMeter" onMouseClicked="#meterLibro" prefHeight="100.0" prefWidth="200.0" styleClass="seccion">
+               <children>
+                  <ImageView fx:id="imagenMeter" fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="60.0" top="33.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../images/plusnegro.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="labelAñadirLibro" prefHeight="61.0" prefWidth="142.0" styleClass="labelCadaPanel" text="Añadir">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="hboxLibros" onMouseClicked="#verLibros" prefHeight="100.0" prefWidth="200.0" styleClass="seccion">
+               <children>
+                  <ImageView fx:id="imagenLibros" fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="60.0" top="33.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../images/librosnegro.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="labelLibros" prefHeight="61.0" prefWidth="142.0" styleClass="labelCadaPanel" text="Ver libros">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
