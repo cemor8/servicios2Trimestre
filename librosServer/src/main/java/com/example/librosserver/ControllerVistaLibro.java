@@ -1,6 +1,14 @@
 package com.example.librosserver;
 
+import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -21,6 +29,9 @@ public class ControllerVistaLibro {
     private Data data;
     private Socket socket;
     ObjectInputStream in;
+    private VBox vBox = new VBox();
+    @FXML
+    private MFXScrollPane meterLibros;
     ObjectOutputStream out;
 
     public void iniciar(Data data)  {
@@ -78,19 +89,46 @@ public class ControllerVistaLibro {
                  IllegalBlockSizeException | InvalidKeyException | BadPaddingException e) {
             throw new RuntimeException(e);
         }
-
-
-
-        /* Recibir datos del servidor y mostrar libros */
+        this.recorrer();
 
 
     }
-    public void recorrer(){
+    public void recorrer()  {
+        try {
+            vBox = new VBox();
+            int i = 0;
+            HBox hBox = new HBox();
+            for (Libro libro : librosRecorrer){
+                AnchorPane anchorPane = new AnchorPane();
+                anchorPane.setId(String.valueOf(librosRecorrer.indexOf(libro)));
 
-    }
-    public void recibirLibro(Libro libro){
-        Platform.runLater(() -> {
-            recorrer();
-        });
+                anchorPane.getStyleClass().add("cadaAnchor");
+
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cada_libro.fxml"));
+                Parent root = fxmlLoader.load();
+
+                ControllerCadaLibro controllerCadaLibro = fxmlLoader.getController();
+                controllerCadaLibro.recibirData(this.data, libro);
+                anchorPane.getChildren().setAll(root);
+                HBox.setMargin(anchorPane, new Insets(0, 20, 0, 20));
+                hBox.getChildren().add(anchorPane);
+                VBox.setMargin(hBox, new Insets(20, 0, 0, 100));
+                if ((i + 1) % 3 == 0) {
+                    vBox.getChildren().add(hBox);
+
+                    hBox = new HBox();
+                }
+
+                i++;
+
+            }
+            if (!hBox.getChildren().isEmpty()) {
+                vBox.getChildren().add(hBox);
+            }
+            this.meterLibros.setContent(vBox);
+        }catch (IOException err){
+            System.out.println(err.getMessage());
+        }
+
     }
 }
