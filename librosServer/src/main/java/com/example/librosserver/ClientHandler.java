@@ -125,6 +125,7 @@ public class ClientHandler extends Thread {
 
             } catch (IOException | ClassNotFoundException e) {
                 System.out.println("Error al manejar al cliente: " + e.getMessage());
+                return;
             } catch (NoSuchPaddingException | InvalidKeyException | BadPaddingException | NoSuchAlgorithmException |
                      IllegalBlockSizeException e) {
                 System.out.println(e.getMessage());

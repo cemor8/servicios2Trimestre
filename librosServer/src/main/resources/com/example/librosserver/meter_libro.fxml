@@ -3,22 +3,25 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="900.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librosserver.ControllerMeterLibro">
    <children>
-      <MFXTextField fx:id="introducirNombre" layoutX="599.0" layoutY="342.0" prefHeight="53.0" prefWidth="277.0" styleClass="introducir" />
-      <MFXTextField fx:id="introducirAutor" layoutX="601.0" layoutY="481.0" prefHeight="53.0" prefWidth="277.0" styleClass="introducir" />
-      <MFXButton fx:id="btnEnviar" layoutX="311.0" layoutY="673.0" onMouseClicked="#enviar" prefHeight="70.0" prefWidth="354.0" styleClass="btnContinuar" text="Crear" />
-      <Label fx:id="labelAutor" layoutX="601.0" layoutY="427.0" prefHeight="45.0" prefWidth="147.0" styleClass="labelSuperior" text="Autor" />
-      <Label fx:id="labelNombre" layoutX="599.0" layoutY="286.0" prefHeight="45.0" prefWidth="147.0" styleClass="labelSuperior" text="Nombre:" />
+      <MFXTextField fx:id="introducirNombre" layoutX="617.0" layoutY="226.0" prefHeight="53.0" prefWidth="277.0" styleClass="introducir" />
+      <MFXTextField fx:id="introducirAutor" layoutX="617.0" layoutY="356.0" prefHeight="53.0" prefWidth="277.0" styleClass="introducir" />
+      <MFXButton fx:id="btnEnviar" layoutX="311.0" layoutY="747.0" onMouseClicked="#enviar" prefHeight="70.0" prefWidth="354.0" styleClass="btnContinuar" text="Crear" />
+      <Label fx:id="labelAutor" layoutX="617.0" layoutY="302.0" prefHeight="45.0" prefWidth="147.0" styleClass="labelSuperior" text="Autor" />
+      <Label fx:id="labelNombre" layoutX="617.0" layoutY="170.0" prefHeight="45.0" prefWidth="147.0" styleClass="labelSuperior" text="Nombre:" />
       <ImageView fx:id="meterImagen" fitHeight="319.0" fitWidth="285.0" layoutX="145.0" layoutY="249.0" onMouseClicked="#meterImagen" pickOnBounds="true">
          <image>
             <Image url="@../../../images/imagenPlaceholder/preview.png" />
          </image>
       </ImageView>
       <Label layoutX="145.0" layoutY="170.0" prefHeight="45.0" prefWidth="147.0" styleClass="labelSuperior" text="Imagen" />
+      <Label fx:id="labelAutor1" layoutX="619.0" layoutY="428.0" prefHeight="45.0" prefWidth="147.0" styleClass="labelSuperior" text="Descripción" />
+      <TextArea fx:id="desc" layoutX="619.0" layoutY="484.0" prefHeight="70.0" prefWidth="285.0" styleClass="areatext" wrapText="true" />
    </children>
 </AnchorPane>

@@ -9,11 +9,14 @@ public class Libro implements Serializable {
     private String titulo;
     private String autor;
     private String imagen;
+    private String descripcion;
 
-    public Libro(String titulo, String autor, String imagenPath) {
+
+    public Libro(String titulo, String autor, String imagen, String descripcion) {
         this.titulo = titulo;
         this.autor = autor;
-        this.imagen = imagenPath;
+        this.imagen = imagen;
+        this.descripcion = descripcion;
     }
 
     public String getTitulo() {
@@ -24,6 +27,12 @@ public class Libro implements Serializable {
         return autor;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {        this.descripcion = descripcion;
+    }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;

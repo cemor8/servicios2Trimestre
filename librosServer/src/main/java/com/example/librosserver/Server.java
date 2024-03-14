@@ -15,7 +15,7 @@ public class Server {
 
     private ServerSocket serverSocket;
     private boolean funcionando = true;
-    private ArrayList<Libro> libros = new ArrayList<>(List.of(new Libro("test","test","")));
+    private ArrayList<Libro> libros = new ArrayList<>();
     private HashMap<String, Socket> direcciones = new HashMap<>();
     private HashMap<String, PublicKey> llaves = new HashMap<>();
     private KeyPair keyPair;
@@ -25,7 +25,7 @@ public class Server {
         KeyPairGeneratorExample keyPairGenerator = new KeyPairGeneratorExample();
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
         this.keyPair = keyPair;
-        this.libros.add(new Libro("e","e","w"));
+        this.libros.add(new Libro("Test","Test","src/main/resources/images/ili.jpg","Descripcion de prueba para el libro de prueba"));
     }
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
         Server server = new Server();

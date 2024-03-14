@@ -4,6 +4,7 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -34,6 +35,8 @@ public class ControllerMeterLibro {
 
     @FXML
     private MFXTextField introducirAño;
+    @FXML
+    private TextArea desc;
 
     @FXML
     private MFXTextField introducirIsbn;
@@ -87,7 +90,7 @@ public class ControllerMeterLibro {
     void enviar(MouseEvent event) {
         this.socket = data.getSocket();
         boolean error = false;
-        /*
+
         if(!validarContenido(this.columnasExpresiones.get("Nombre"),this.introducirNombre.getText())){
             error = true;
             this.introducirNombre.setText("");
@@ -99,12 +102,14 @@ public class ControllerMeterLibro {
         if(this.imagenSeleccionada == null){
             error = true;
         }
+        if (this.desc.getText().isEmpty()){
+            error = true;
+        }
         if (error){
             return;
         }
 
-         */
-        Libro libro = new Libro(this.introducirNombre.getText(),this.introducirAutor.getText(),"");
+        Libro libro = new Libro(this.introducirNombre.getText(),this.introducirAutor.getText(),imagenSeleccionada,this.desc.getText());
 
         /* Enviar libro a servidor cifrando */
 

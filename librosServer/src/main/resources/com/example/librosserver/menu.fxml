@@ -10,7 +10,7 @@
 
 <AnchorPane id="menu" fx:id="menuLateral" prefHeight="900.0" prefWidth="292.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librosserver.ControllerMenu">
    <children>
-      <Label id="mostrarNombre" fx:id="labelMostrarNombre" alignment="CENTER" layoutX="24.0" layoutY="36.0"  prefHeight="80.0" prefWidth="257.0" />
+      <Label id="mostrarNombre" fx:id="labelMostrarNombre" alignment="CENTER" layoutX="24.0" layoutY="36.0" prefHeight="80.0" prefWidth="257.0" />
       <VBox layoutX="-3.0" layoutY="298.0" prefHeight="390.0" prefWidth="307.0">
          <children>
             <HBox fx:id="hboxMeter" onMouseClicked="#meterLibro" prefHeight="100.0" prefWidth="200.0" styleClass="seccion">
@@ -20,7 +20,7 @@
                         <Insets left="60.0" top="33.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@../../../images/plusnegro.png" />
+                        <Image url="@../../../images/plusblanco.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="labelAñadirLibro" prefHeight="61.0" prefWidth="142.0" styleClass="labelCadaPanel" text="Añadir">
@@ -37,7 +37,7 @@
                         <Insets left="60.0" top="33.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@../../../images/librosnegro.png" />
+                        <Image url="@../../../images/librosblanco.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="labelLibros" prefHeight="61.0" prefWidth="142.0" styleClass="labelCadaPanel" text="Ver libros">

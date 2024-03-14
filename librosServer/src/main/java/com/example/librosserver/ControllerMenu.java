@@ -79,8 +79,9 @@ public class ControllerMenu {
 
         this.labelAñadirLibro.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"), true);
         this.hboxMeter.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"), true);
+        this.labelLibros.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"), false);
+        this.hboxLibros.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"), false);
 
-        this.imagenMeter.setImage(new Image(getClass().getResourceAsStream("/images/plusgris.png")));
 
 
     }
@@ -103,7 +104,9 @@ public class ControllerMenu {
         this.labelLibros.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"), true);
         this.hboxLibros.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"), true);
 
-        this.imagenLibros.setImage(new Image(getClass().getResourceAsStream("/images/librosgris.png")));
+        this.labelAñadirLibro.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"), false);
+        this.hboxMeter.pseudoClassStateChanged(PseudoClass.getPseudoClass("selected"), false);
+
 
 
     }

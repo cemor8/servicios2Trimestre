@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="900.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librosserver.ControllerVistaDetallada">
+   <children>
+      <ImageView id="img" fx:id="img" fitHeight="365.0" fitWidth="319.0" layoutX="129.0" layoutY="108.0" pickOnBounds="true" />
+      <Label id="libroTitulo" fx:id="labelTitulo" layoutX="563.0" layoutY="108.0" prefHeight="55.0" prefWidth="188.0" text="Titulo" />
+      <Label id="libroAutor" fx:id="labelAutor" layoutX="563.0" layoutY="177.0" prefHeight="34.0" prefWidth="175.0" text="Autor" />
+      <MFXButton id="btnVolver" fx:id="btnVolver" layoutX="129.0" layoutY="741.0" onMouseClicked="#volver" prefHeight="55.0" prefWidth="168.0" text="Volver" />
+      <TextArea fx:id="desc" layoutX="129.0" layoutY="498.0" prefHeight="200.0" prefWidth="745.0" wrapText="true" />
+   </children>
+</AnchorPane>

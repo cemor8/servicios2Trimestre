@@ -30,7 +30,7 @@ public class ControllerCadaLibro {
 
     @FXML
     void ver(MouseEvent event) {
-        /*
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("vista_libro.fxml"));
         Parent root = null;
         try {
@@ -38,17 +38,18 @@ public class ControllerCadaLibro {
         }catch (IOException err){
             System.out.println(err.getMessage());
         }
-        ControllerVistaLibro controllerVistaLibro =fxmlLoader.getController();
-        controllerVistaLibro.establecerDatos(this.data);
+        ControllerVistaDetallada controllerVistaDetallada =fxmlLoader.getController();
+        controllerVistaDetallada.establecerDatos(this.data,libro);
         this.data.getControllers().getControllerPanelPrincipal().cambiarContenido(root);
 
-         */
+
     }
     public void recibirData(Data data, Libro libro){
         this.data = data;
         this.libro = libro;
         this.titulo.setText(this.libro.getTitulo());
         this.autor.setText(this.libro.getAutor());
+        meterImagen.setPreserveRatio(false);
         this.meterImagen.setImage(new Image("file:"+this.libro.getImagen()));
     }
 
