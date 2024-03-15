@@ -167,6 +167,7 @@ public class ControllerMeterLibro {
         this.meterImagen.setImage(new Image(getClass().getResourceAsStream("/images/imagenPlaceholder/preview.png")));
         this.introducirAutor.setText("");
         this.introducirNombre.setText("");
+        this.desc.setText("");
     }
 
     /**
