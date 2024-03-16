@@ -3,9 +3,8 @@
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="900.0" prefWidth="999.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librosserver.ControllerVistaLibro">
+<AnchorPane prefHeight="900.0" prefWidth="999.0" styleClass="main" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librosserver.ControllerVistaLibro">
    <children>
-      <MFXScrollPane fx:id="meterLibros" layoutX="32.0" layoutY="26.0" prefHeight="847.0" prefWidth="937.0" />
+      <MFXScrollPane fx:id="meterLibros" layoutX="32.0" layoutY="26.0" prefHeight="847.0" prefWidth="937.0" styleClass="main" />
    </children>
 </AnchorPane>
