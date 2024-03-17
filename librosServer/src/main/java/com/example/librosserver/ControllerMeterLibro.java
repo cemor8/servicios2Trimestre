@@ -115,31 +115,31 @@ public class ControllerMeterLibro {
 
         try {
             out = new ObjectOutputStream(socket.getOutputStream());
-            System.out.println("enviado publica");
+
             out.writeObject(data.getLlaves().getPublic());
             out.flush();
 
             in = new ObjectInputStream(socket.getInputStream());
 
-            System.out.println("recibiendo publica");
+
             PublicKey llaveServer = (PublicKey) in.readObject();
-            System.out.println("pase");
+
             if (llaveServer == null){
                 System.out.println("error al recibir llave de server");
                 return;
             }
-            System.out.println("del todo");
+
             data.setLlaveServer(llaveServer);
             Encryptor encryptor = new Encryptor();
             byte[] operacion = encryptor.encrypt("crear",data.getLlaveServer());
-            System.out.println("envio tamaño");
+
             out.writeInt(operacion.length);
             out.flush();
-            System.out.println("envio operacion");
+
             out.write(operacion);
             out.flush();
 
-            System.out.println("enviando libro");
+
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
             oos.writeObject(libro);
@@ -193,7 +193,7 @@ public class ControllerMeterLibro {
         if(selectedFile != null){
             String imagePath = selectedFile.getAbsolutePath();
             this.imagenSeleccionada = imagePath;
-            System.out.println(imagenSeleccionada);
+
             this.meterImagen.setImage(new Image("file:"+imagenSeleccionada));
         }else {
             if(this.imagenSeleccionada != null){

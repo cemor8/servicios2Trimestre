@@ -33,7 +33,7 @@ public class ClientHandler extends Thread {
     }
 
     /**
-     * Método que se encarga de gestionar las conexiones con cada cliente del servidor de correo
+     * Método que se encarga de gestionar las conexiones con cada cliente del servidor
      */
     @Override
     public void run() {
@@ -46,23 +46,21 @@ public class ClientHandler extends Thread {
 
                 Decryptor decryptor = new Decryptor();
                 Encryptor encryptor = new Encryptor();
-                System.out.println("llave recibida en servudir");
+
                 PublicKey llave = (PublicKey) in.readObject();
-                System.out.println("llave enviada a cliente");
+
                 out.writeObject(llavesServer.getPublic());
                 out.flush();
-                System.out.println("llave enviada");
+
                 int longitud = in.readInt();
-                System.out.println("longitud test "+ longitud);
+
 
                 byte[] operacionCifrada = new byte[longitud];
                 in.readFully(operacionCifrada);
-                System.out.println(in);
-                System.out.println(llavesServer.getPrivate());
+
                 String operacion = decryptor.decrypt(operacionCifrada,llavesServer.getPrivate());
 
-                System.out.println("operacion");
-                System.out.println(operacion);
+
 
                 if (operacion.equalsIgnoreCase("login")){
                     longitud = in.readInt();
@@ -103,7 +101,7 @@ public class ClientHandler extends Thread {
                 }else if (operacion.equalsIgnoreCase("recibir")){
 
                     for (Libro libro : libros){
-                        System.out.println("recorriendo libtos");
+
                         ByteArrayOutputStream baos = new ByteArrayOutputStream();
                         ObjectOutputStream oos = new ObjectOutputStream(baos);
                         oos.writeObject(libro);
@@ -119,7 +117,7 @@ public class ClientHandler extends Thread {
                     }
                     out.writeInt(0);
                     out.flush();
-                    System.out.println("acabe");
+
                 }
 
 

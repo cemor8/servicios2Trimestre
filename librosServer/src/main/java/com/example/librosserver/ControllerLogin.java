@@ -31,12 +31,6 @@ public class ControllerLogin {
     private int puerto = 5000;
     ObjectInputStream in;
     ObjectOutputStream out;
-    Map<String, String> columnasExpresiones = new HashMap<String, String>() {
-        {
-            put("mail", "^[a-zA-Z0-9._%+-]+@(gmail.com|hotmail.com)$");
-        }
-
-    };
 
 
     /**
@@ -45,16 +39,12 @@ public class ControllerLogin {
     @FXML
     void enviarCredenciales(ActionEvent event) throws IOException, ClassNotFoundException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
 
-        /*
-        if (this.introducirNombre.getText().isEmpty() || !this.validarContenido(columnasExpresiones.get("mail"),this.introducirNombre.getText())){
+
+        if (this.introducirNombre.getText().isEmpty()){
             return;
         }
 
-         */
-
-
         /* Comunicacion con server */
-
 
 
         Data data = new Data();
@@ -67,35 +57,35 @@ public class ControllerLogin {
 
 
         out = new ObjectOutputStream(socket.getOutputStream());
-        System.out.println("enviado publica");
+
         out.writeObject(data.getLlaves().getPublic());
         out.flush();
 
         in = new ObjectInputStream(socket.getInputStream());
 
-        System.out.println("recibiendo publica");
+
         PublicKey llaveServer = (PublicKey) in.readObject();
-        System.out.println("pase");
+
         if (llaveServer == null){
             System.out.println("error al recibir llave de server");
             return;
         }
-        System.out.println("del todo");
+
         data.setLlaveServer(llaveServer);
 
         Encryptor encryptor = new Encryptor();
         Decryptor decryptor = new Decryptor();
         byte[] operacion = encryptor.encrypt("login",data.getLlaveServer());
-        System.out.println("envio tamaño");
+
         out.writeInt(operacion.length);
         out.flush();
-        System.out.println("envio operacion");
+
         out.write(operacion);
         out.flush();
 
 
 
-        System.out.println("recibo texto");
+
         byte[] cipherText = encryptor.encrypt(introducirNombre.getText(),data.getLlaveServer());
         out.writeInt(cipherText.length);
         out.flush();
@@ -107,16 +97,16 @@ public class ControllerLogin {
         in.readFully(respuesta);
         String respuestaDesc = decryptor.decrypt(respuesta,data.getLlaves().getPrivate());
 
-        System.out.println(respuestaDesc);
+
         if (respuestaDesc.equalsIgnoreCase("repetido")){
-            System.out.println("mal");
+            System.out.println("Error al logear");
         }else {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("panel_principal.fxml"));
             Parent root = fxmlLoader.load();
             ControllerPanelPrincipal controllerPanelPrincipal = fxmlLoader.getController();
             controllerPanelPrincipal.establecerDatos(data);
-            System.out.println("bien");
+
 
 
 

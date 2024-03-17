@@ -34,10 +34,9 @@ public class Server {
 
     public void iniciar() throws IOException {
         while (funcionando) {
-            System.out.println("Esperando cliente");
-            // Cliente se conecta
+
             Socket clientSocket = serverSocket.accept();
-            System.out.println("Cliente conectado");
+
 
             ClientHandler clientHandler = new ClientHandler(clientSocket, libros, direcciones,llaves,keyPair);
             clientHandler.start();

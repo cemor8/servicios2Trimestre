@@ -28,6 +28,10 @@ public class ControllerCadaLibro {
     private Libro libro;
     private Data data;
 
+    /**
+     * Método que se encarga de cargar la vista de cada libro
+     * @param event
+     */
     @FXML
     void ver(MouseEvent event) {
 
@@ -44,6 +48,12 @@ public class ControllerCadaLibro {
 
 
     }
+
+    /**
+     * Método que se encarga de recibir informacion
+     * @param data
+     * @param libro
+     */
     public void recibirData(Data data, Libro libro){
         this.data = data;
         this.libro = libro;
